@@ -112,7 +112,7 @@ export function HeroSection() {
                   <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8">
                     Agendar Consulta
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#1a3a4a] px-8">
+                  <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                     Conheça o Hospital
                   </Button>
                 </div>
