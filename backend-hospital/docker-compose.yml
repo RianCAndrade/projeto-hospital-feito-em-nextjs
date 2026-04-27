@@ -1,0 +1,42 @@
+services:
+  hospital_app:
+    build: .
+    container_name: hospital-app
+    volumes:
+      - .:/var/www/html
+    env_file: .env
+    depends_on:
+      - db
+      - redis
+
+  nginx:
+    image: nginx:alpine
+    container_name: hospital-nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - hospital_app
+
+  db:
+    image: postgres:16-alpine
+    container_name: hospital-db
+    environment:
+      POSTGRES_DB: hospitaldb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ogof
+    ports:
+      - "5435:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: hospital-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:
