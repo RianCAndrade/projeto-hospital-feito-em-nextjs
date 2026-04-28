@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Service\RegisterService;
+use Illuminate\Http\Client\Request;
+
 class RegisterController
 {
-    public function __construct(){}
+    public function __construct(
+        private RegisterService $registerService
+    ){}
 
-    public function register()
+    public function register(Request $request)
     {
         
     }
