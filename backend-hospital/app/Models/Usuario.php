@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Attributes\Table;
 // use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 #[Table('tbusuarios', timestamps:true)]
@@ -14,7 +15,7 @@ use Laravel\Sanctum\HasApiTokens;
 #[Hidden('senha')]
 class Usuario extends User
 {
-    use HasApiTokens;
+    use HasApiTokens, Notifiable;
 
     protected $casts = [
         'senha' => 'hashed'
